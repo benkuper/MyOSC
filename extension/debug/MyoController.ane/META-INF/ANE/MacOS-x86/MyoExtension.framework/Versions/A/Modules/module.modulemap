@@ -1,0 +1,6 @@
+framework module MyoExtension {
+  umbrella header "MyoExtension.h"
+
+  export *
+  module * { export * }
+}
