@@ -2,8 +2,9 @@ set LIB_NAME=MyoController
 set ANE_FILE=%LIB_NAME%.ane
 set ANE_PATH="..\Myo-AIR-AS3-Extension\ane_src\%LIB_NAME%.ane"
 
-
+mkdir lib
 copy %ANE_PATH% lib\%LIB_NAME%.swc /Y
+
 
 mkdir extension
 mkdir extension\release

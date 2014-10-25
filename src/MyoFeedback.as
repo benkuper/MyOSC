@@ -15,10 +15,8 @@ package
 	 * ...
 	 * @author Ben Kuper
 	 */
-	public class MyoFeedback extends Sprite 
+	public class MyoFeedback extends Feedback 
 	{
-		
-		private var enabled:Boolean;
 		
 		private var _orientationEnabled:Boolean;
 		private var _poseEnabled:Boolean;
@@ -27,14 +25,12 @@ package
 		
 		public var myo:Myo;
 		
-		public static const RADIUS:Number = 80;
+		
 		
 		public var poseBM:Bitmap;
-		public var innerMask:Shape;
-		public var inner:Sprite;
-		public var lines:Sprite;
-		private var _selected:Boolean;
 		
+		
+		public var lines:Sprite;
 		
 		private var offsetYaw:Number;//to integrate in library
 		
@@ -48,12 +44,7 @@ package
 			
 			enabled = true;
 			
-			innerMask = new Shape();
-			addChild(innerMask);
-			inner = new Sprite();
-			addChild(inner);
-			inner.mask = innerMask;
-			draw();
+			
 			
 			lines = new Sprite();
 			addChild(lines);
@@ -73,24 +64,22 @@ package
 			offsetYaw = 0;
 			
 			addEventListener(MouseEvent.RIGHT_CLICK, rightClick);
+			
+			myo.addEventListener(MyoEvent.MYO_CONNECTED, myoConnected);
+			myo.addEventListener(MyoEvent.MYO_DISCONNECTED, myoDisconnected);
 		}
+		
+		
+		
 		
 		
 		
 		//UI
 		
-		private function draw():void 
+		override protected function draw():void 
 		{
 			
-			innerMask.graphics.clear();
-			innerMask.graphics.beginFill(0xff00ff);
-			innerMask.graphics.drawCircle(0, 0, RADIUS);
-			
-			graphics.clear();
-			if (selected) graphics.lineStyle(3, 0xffff00);
-			else graphics.lineStyle(1, 0, .2);
-			graphics.beginFill(0xE2E2E2);
-			graphics.drawCircle(0, 0, RADIUS);
+			super.draw();
 			
 		}
 		
@@ -104,7 +93,7 @@ package
             var angle:Number = startAngle;
             var px:Number =center.x+radius*Math.cos(angle*deg_to_rad);
             var py:Number =center.y+radius*Math.sin(angle*deg_to_rad);
-           g.moveTo(px, py);
+			g.moveTo(px, py);
 			
             for (var i:int=1; i<=steps; i++) {
                 angle = startAngle+angle_diff / steps * i;
@@ -123,6 +112,8 @@ package
 		{
 			if (!enabled) return;
 			
+			
+			//trace(myo.yaw, correctedYaw);
 			
 			//trace("Orientation update !", myo.yaw, myo.pitch, myo.roll);
 			inner.rotation = correctedYaw * 180 / Math.PI + 90; // arm upward is 0
@@ -154,12 +145,26 @@ package
 		}
 		
 		
+		private function myoConnected(e:MyoEvent):void 
+		{
+			TweenLite.to(this, .5, { alpha: 1} );
+		}
+		
+		private function myoDisconnected(e:MyoEvent):void 
+		{
+			TweenLite.to(this, .5, { alpha:.3 } );
+		}
+		
 		//GETTER / SETTER
 		
 		
 		public function get correctedYaw():Number
 		{
-			return -(myo.yaw - offsetYaw);
+			var oy:Number = -(myo.yaw - offsetYaw);
+			if (oy > Math.PI) oy -= Math.PI*2;
+			else if (oy < -Math.PI) oy += Math.PI*2;
+			
+			return oy;
 			//return myo.yaw;
 		}
 		
@@ -192,18 +197,10 @@ package
 			else myo.removeEventListener(MyoEvent.POSE_UPDATE, poseUpdate);
 		}
 		
-		public function get selected():Boolean 
+		override public function get id():String
 		{
-			return _selected;
+			return myo.id;
 		}
-		
-		public function set selected(value:Boolean):void 
-		{
-			_selected = value;
-			draw();
-		}
-		
-		
 		
 	}
 

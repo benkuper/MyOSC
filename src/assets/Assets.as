@@ -67,6 +67,9 @@ package assets
 				case Myo.POSE_WAVE_IN: return new POSE_WAVE_IN() as Bitmap; break;
 				case Myo.POSE_WAVE_OUT: return new POSE_WAVE_OUT() as Bitmap; break;
 				case Myo.POSE_TWIST_IN: return new POSE_TURN_IN() as Bitmap; break;
+				
+			default:
+				return new POSE_NONE() as Bitmap;
 			}
 			
 			return new Bitmap();

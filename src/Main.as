@@ -4,6 +4,9 @@ package
 	import assets.fonts.Fonts;
 	import benkuper.nativeExtensions.MyoController;
 	import benkuper.nativeExtensions.MyoEvent;
+	import benkuper.nativeExtensions.NativeSerial;
+	import benkuper.nativeExtensions.SerialEvent;
+	import benkuper.nativeExtensions.SerialPort;
 	import com.greensock.TweenLite;
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemTrayIcon;
@@ -22,6 +25,7 @@ package
 	import flash.geom.Rectangle;
 	import flash.ui.Keyboard;
 	import flash.utils.ByteArray;
+	
 	
 	/**
 	 * ...
@@ -42,6 +46,9 @@ package
 		
 		private var sysTrayIcon:SystemTrayIcon;
 		
+		//Glove addon
+		private var gloveSerial:NativeSerial;
+		
 		
 		public function Main():void 
 		{
@@ -60,7 +67,6 @@ package
 			blurDesktop = true;
 			blurBG = new Bitmap();
 			addChild(blurBG);
-			
 			
 			
 			cp = new ConnectionPanel();
@@ -87,6 +93,25 @@ package
 			
 			
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, invokeHandler);
+			
+			//Glove Addon
+			//gloveSerial = new NativeSerial();
+			//var glovePort:String = "COM30";
+			//for each(var p:SerialPort in NativeSerial.ports)
+			//{
+				//if (p.COMID == "COM30")
+				//{
+					//gloveSerial.openPort("COM30", 115200);
+					//gloveSerial.addEventListener(SerialEvent.DATA, gloveData);
+					//FeedbackPanel.instance.addGlove(gloveSerial);
+				//}
+			//}s
+			
+		}
+		
+		private function gloveData(e:SerialEvent):void 
+		{
+			
 		}
 		
 		private function invokeHandler(e:InvokeEvent):void 
