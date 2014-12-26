@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<application xmlns="http://ns.adobe.com/air/application/14.0">
+  <id>MyOSC</id>
+  <versionNumber>1.0</versionNumber>
+  <filename>MyOSC</filename>
+  <name>MyOSC</name>
+  <initialWindow>
+    <title>MyOSC</title>
+    <content>MyOSC.swf</content>
+    <systemChrome>none</systemChrome>
+    <transparent>true</transparent>
+    <visible>true</visible>
+    <minimizable>true</minimizable>
+    <maximizable>true</maximizable>
+    <resizable>true</resizable>
+  </initialWindow>
+  <!-- 
+	More options:
+	http://livedocs.adobe.com/flex/3/html/File_formats_1.html#1043413
+	-->
+  <supportedProfiles>extendedDesktop</supportedProfiles>
+  <extensions>
+    <extensionID>benkuper.nativeExtensions.MyoController</extensionID>
+    <extensionID>benkuper.nativeExtensions.NativeSerial</extensionID>
+  </extensions>
+</application>
