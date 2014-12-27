@@ -7,7 +7,11 @@ MyOSC is OSC Bridge made with Adobe AIR that let users easily send data from one
 MyOSC can also receive vibrate OSC messages from applications to make the connected myo vibrate
 
 ### Installation / Usage
-Install using the MyOSC.exe in the /air folder.
+
+Windows : Install using the MyOSC.exe in the "installers" folder.
+Mac : Install using the MyOSC.dmg in the "installers" folder. You might need to copy "myo.framework" from the official Myo SDK from Thalmic into the "~/Library/Frameworks" folder of your computer.
+
+
 When installed, application should open full screen.
 - Hit "Escape" to hide it.
 - Left click on the system tray icon to open it again
@@ -33,12 +37,9 @@ When installed, application should open full screen.
 
 - Connect with multiple Myos
 - Live creation / removal of OSC targets
-- Myo main data feedback
+- Orientation, Pose, Gyroscope and Accelerometer data providing
 - Per target data filtering (enabled pose / orientation sending)
 - One Click Saving / Loading presets
 - OSC target registration (the target application can send an OSC Message to register into the bridge)
 - Vibrate Myo via OSC, by ID or all at once
 - Easy absolute yaw calibration
- 
-## Roadmap
-- Add accelerometer and gyroscope data
