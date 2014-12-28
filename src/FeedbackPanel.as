@@ -3,8 +3,8 @@ package
 	import assets.Assets;
 	import assets.fonts.Fonts;
 	import benkuper.nativeExtensions.Myo;
-	import benkuper.nativeExtensions.NativeSerial;
-	import benkuper.nativeExtensions.SerialPort;
+	//import benkuper.nativeExtensions.NativeSerial;
+	//import benkuper.nativeExtensions.SerialPort;
 	import com.greensock.easing.Strong;
 	import com.greensock.TweenLite;
 	import flash.display.Bitmap;
@@ -97,7 +97,10 @@ package
 		
 		
 		//Glove addond
-		public function addGlove(serial:NativeSerial):void 
+
+        /*
+        public function addGlove(serial:NativeSerial):void
+
 		{
 			var g:GloveFeedback = new GloveFeedback(serial);
 			feedbacks.push(g);
@@ -105,7 +108,8 @@ package
 			placeElements();
 			Toaster.success("Glove added");
 		}
-		
+		*/
+
 		public function vibrateAllMyos(intensity:int = Myo.VIBRATION_SHORT):void 
 		{
 			for each(var f:Feedback in feedbacks)

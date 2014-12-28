@@ -4,9 +4,12 @@ package
 	import assets.fonts.Fonts;
 	import benkuper.nativeExtensions.MyoController;
 	import benkuper.nativeExtensions.MyoEvent;
-	import benkuper.nativeExtensions.NativeSerial;
-	import benkuper.nativeExtensions.SerialEvent;
-	import benkuper.nativeExtensions.SerialPort;
+
+import flash.system.Capabilities;
+
+    //import benkuper.nativeExtensions.NativeSerial;
+	//import benkuper.nativeExtensions.SerialEvent;
+	//import benkuper.nativeExtensions.SerialPort;
 	import com.greensock.TweenLite;
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemTrayIcon;
@@ -25,30 +28,32 @@ package
 	import flash.geom.Rectangle;
 	import flash.ui.Keyboard;
 	import flash.utils.ByteArray;
-	
-	
+
+
 	/**
 	 * ...
 	 * @author Ben Kuper
 	 */
-	public class Main extends Sprite 
+	public class Main extends Sprite
 	{
 		private var cp:ConnectionPanel;
 		private var fp:FeedbackPanel;
 		private var pp:PresetPanel;
-		
+
 		private var blurDesktop:Boolean;
 		private var _opened:Boolean;
-		
+
 		private var blurBG:Bitmap;
-		
+
 		private var mc:MyoController;
 		
 		private var sysTrayIcon:SystemTrayIcon;
 		
 		//Glove addon
-		private var gloveSerial:NativeSerial;
-		
+		//private var gloveSerial:NativeSerial;
+
+        private var isWin:Boolean;
+        private var isMac:Boolean;
 		
 		public function Main():void 
 		{
@@ -82,14 +87,24 @@ package
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			
 			NativeApplication.nativeApplication.icon.bitmaps = [(new Assets.SYSTRAY_ICON() as Bitmap).bitmapData];
-			sysTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;
-			sysTrayIcon.addEventListener(MouseEvent.CLICK, sysTrayIconClick);
-			var sysMenu:NativeMenu = new NativeMenu();
+
+            isWin =  Capabilities.os.toLowerCase().indexOf("win") != -1;
+            isMac = Capabilities.os.toLowerCase().indexOf("mac") != -1;
+
+
+
+            var sysMenu:NativeMenu = new NativeMenu();
 			var exitItem:NativeMenuItem = new NativeMenuItem("Exit");
 			exitItem.addEventListener(Event.SELECT, exitSelect);
 			sysMenu.addItem(exitItem);
-			SystemTrayIcon(NativeApplication.nativeApplication.icon).menu = sysMenu;
-			opened = true;
+
+            if(isWin) {
+                sysTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;
+                sysTrayIcon.addEventListener(MouseEvent.CLICK, sysTrayIconClick);
+                SystemTrayIcon(NativeApplication.nativeApplication.icon).menu = sysMenu;
+            }
+
+            opened = true;
 			
 			
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, invokeHandler);
@@ -108,12 +123,14 @@ package
 			//}s
 			
 		}
-		
+
+        /*
 		private function gloveData(e:SerialEvent):void 
 		{
 			
 		}
-		
+		*/
+
 		private function invokeHandler(e:InvokeEvent):void 
 		{
 			opened = true;
@@ -186,9 +203,11 @@ package
 			
 			cp.opened = value;
 			fp.opened = value;
-			
-			sysTrayIcon.tooltip = "MyOSC - " + fp.feedbacks.length + " Myos, " + cp.connections.length + " connections";
-		}
+
+            if(isWin) {
+                sysTrayIcon.tooltip = "MyOSC - " + fp.feedbacks.length + " Myos, " + cp.connections.length + " connections";
+            }
+        }
 		
 		
 		

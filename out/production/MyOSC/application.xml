@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <application xmlns="http://ns.adobe.com/air/application/15.0">
   <id>MyOSC</id>
   <versionNumber>1.0</versionNumber>
@@ -24,3 +24,4 @@
     <!--<extensionID>benkuper.nativeExtensions.NativeSerial</extensionID>-->
   </extensions>
 </application>
+
