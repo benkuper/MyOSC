@@ -23,13 +23,13 @@ package
 		
 		public function OSCMaster() 
 		{
-			port = 9000;
-			oscM = new OSCManager(new UDPConnector("127.0.0.1", 9000), new UDPConnector("127.0.0.1", 10000, false, false));
+			port = 11000;
+			oscM = new OSCManager(new UDPConnector("127.0.0.1", port), new UDPConnector("127.0.0.1", 10000, false, false));
 			oscM.addMsgListener(this);
 			var lanIP:String = IPUtil.getLocalIP();
 			if (lanIP != "127.0.0.1")
 			{
-				oscMLan = new OSCManager(new UDPConnector(lanIP, 9000), null);
+				oscMLan = new OSCManager(new UDPConnector(lanIP, port), null);
 				oscMLan.addMsgListener(this);
 			}
 		}
