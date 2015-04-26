@@ -83,7 +83,7 @@ import flash.system.Capabilities;
 			
 			mc = new MyoController();
 			mc.addEventListener(MyoEvent.MYO_PAIRED, myoPaired);
-			mc.setLockingPolicy(false);
+			//mc.setLockingPolicy(false);
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			

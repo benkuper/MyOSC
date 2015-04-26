@@ -61,9 +61,9 @@ package
 			infosTF = Fonts.createTF("Infos", Fonts.normalCenterTF,TextFieldAutoSize.CENTER);
 			infos.addChild(infosTF);
 			
-			currentAutoLock = false;
+			currentAutoLock = true;
 			autoLockBT = new Button(new Assets.AUTOLOCK_BT());
-			autoLockBT.alpha = .5;
+			autoLockBT.alpha = 1;
 			emgBT = new Button(new Assets.EMG_BT());
 			emgBT.alpha = .5;
 			emgEnabled = false;
