@@ -10,26 +10,26 @@
   </features>
   <libraries>
     <library path="library.swf">
-      <script name="benkuper/nativeExtensions/Myo" mod="1413027730244" signatureChecksum="2393260439" >
+      <script name="_ce0aa49c28c7fac122ea5549052582734360227cfc16eb85ce129f336d640887_flash_display_Sprite" mod="1430218467860" signatureChecksum="2821552403" >
+        <def id="_ce0aa49c28c7fac122ea5549052582734360227cfc16eb85ce129f336d640887_flash_display_Sprite" /> 
+        <dep id="flash.system:Security" type="e" /> 
+        <dep id="flash.display:Sprite" type="i" /> 
+        <dep id="AS3" type="n" /> 
+      </script>
+      <script name="benkuper/nativeExtensions/Myo" mod="1430217139785" signatureChecksum="1902340078" >
         <def id="benkuper.nativeExtensions:Myo" /> 
         <dep id="benkuper.nativeExtensions:MyoController" type="e" /> 
         <dep id="benkuper.nativeExtensions:MyoEvent" type="e" /> 
         <dep id="flash.events:EventDispatcher" type="i" /> 
         <dep id="AS3" type="n" /> 
       </script>
-      <script name="_12da54de937f94c7c617f5e167f64cc3a41da52ea4f49294c4f28865c4e64728_flash_display_Sprite" mod="1416777358911" signatureChecksum="1243380237" >
-        <def id="_12da54de937f94c7c617f5e167f64cc3a41da52ea4f49294c4f28865c4e64728_flash_display_Sprite" /> 
-        <dep id="flash.system:Security" type="e" /> 
-        <dep id="flash.display:Sprite" type="i" /> 
-        <dep id="AS3" type="n" /> 
-      </script>
-      <script name="benkuper/nativeExtensions/MyoEvent" mod="1402498767978" signatureChecksum="2274472288" >
+      <script name="benkuper/nativeExtensions/MyoEvent" mod="1430180259608" signatureChecksum="3264724509" >
         <def id="benkuper.nativeExtensions:MyoEvent" /> 
         <dep id="benkuper.nativeExtensions:Myo" type="s" /> 
         <dep id="flash.events:Event" type="i" /> 
         <dep id="AS3" type="n" /> 
       </script>
-      <script name="benkuper/nativeExtensions/MyoController" mod="1413027699032" signatureChecksum="3359893993" >
+      <script name="benkuper/nativeExtensions/MyoController" mod="1430218334501" signatureChecksum="546579774" >
         <def id="benkuper.nativeExtensions:MyoController" /> 
         <dep id="flash.events:TimerEvent" type="s" /> 
         <dep id="__AS3__.vec:Vector" type="s" /> 
@@ -52,7 +52,7 @@
         <dep id="AS3" type="n" /> 
       </script>
       <digests>
-        <digest type="SHA-256" signed="false" value="83230571aced8aef135490d5af75a1a7d56a3d5f4fc95e7bcd16025b9a26b8bf"   />
+        <digest type="SHA-256" signed="false" value="945589a3a8438e7d821a5d131323bea1cf12f96ec5aed394de6bb3f78215b75c"   />
       </digests>
     </library>
   </libraries>

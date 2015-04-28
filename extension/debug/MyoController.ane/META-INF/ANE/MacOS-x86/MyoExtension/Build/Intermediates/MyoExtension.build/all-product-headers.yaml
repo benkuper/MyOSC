@@ -1,0 +1,17 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/benkuper/Documents/Dev/NativeExtensions/MyoExtension/MyoExtension/Build/Products/Debug/MyoExtension.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "MyoExtension.h",
+          'external-contents': "/Users/benkuper/Documents/Dev/NativeExtensions/MyoExtension/MyoExtension/MyoExtension/MyoExtension.h"
+        }
+      ]
+    }
+  ]
+}

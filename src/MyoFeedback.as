@@ -25,11 +25,7 @@ package
 		
 		public var myo:Myo;
 		
-		
-		
 		public var poseBM:Bitmap;
-		
-		
 		public var lines:Sprite;
 		
 		private var offsetYaw:Number;//to integrate in library
@@ -43,8 +39,6 @@ package
 			poseEnabled = true;
 			
 			enabled = true;
-			
-			
 			
 			lines = new Sprite();
 			addChild(lines);
@@ -67,12 +61,14 @@ package
 			
 			myo.addEventListener(MyoEvent.MYO_CONNECTED, myoConnected);
 			myo.addEventListener(MyoEvent.MYO_DISCONNECTED, myoDisconnected);
+			
+			myo.addEventListener(MyoEvent.EMGDATA_UPDATE, emgUpdate);
+		}		
+		
+		private function emgUpdate(e:MyoEvent):void 
+		{
+			ConnectionPanel.sendEMG(myo.id, myo.emgData);
 		}
-		
-		
-		
-		
-		
 		
 		//UI
 		

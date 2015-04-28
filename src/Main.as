@@ -83,11 +83,12 @@ import flash.system.Capabilities;
 			
 			mc = new MyoController();
 			mc.addEventListener(MyoEvent.MYO_PAIRED, myoPaired);
+			mc.setLockingPolicy(false);
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 			
 			NativeApplication.nativeApplication.icon.bitmaps = [(new Assets.SYSTRAY_ICON() as Bitmap).bitmapData];
-
+			
             isWin =  Capabilities.os.toLowerCase().indexOf("win") != -1;
             isMac = Capabilities.os.toLowerCase().indexOf("mac") != -1;
 
@@ -97,7 +98,7 @@ import flash.system.Capabilities;
 			var exitItem:NativeMenuItem = new NativeMenuItem("Exit");
 			exitItem.addEventListener(Event.SELECT, exitSelect);
 			sysMenu.addItem(exitItem);
-
+			
             if(isWin) {
                 sysTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;
                 sysTrayIcon.addEventListener(MouseEvent.CLICK, sysTrayIconClick);

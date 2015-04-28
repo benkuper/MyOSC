@@ -86,7 +86,7 @@ package
 		private function addBTClick(e:MouseEvent):void 
 		{
 			//trace("bt click, add Connection");
-			addConnection("Connection #" + connections.length, "127.0.0.1",6000+connections.length);
+			addConnection("#" + connections.length, "127.0.0.1",6000+connections.length);
 		}
 		
 		//DATA
@@ -187,6 +187,14 @@ package
 			for each(var c:Connection in instance.connections)
 			{
 				c.sendGyro(id, gyro);
+			}
+		}
+		
+		static public function sendEMG(id:String, data:Vector.<int>):void 
+		{
+			for each(var c:Connection in instance.connections)
+			{
+				c.sendEMG(id, data);
 			}
 		}
 		

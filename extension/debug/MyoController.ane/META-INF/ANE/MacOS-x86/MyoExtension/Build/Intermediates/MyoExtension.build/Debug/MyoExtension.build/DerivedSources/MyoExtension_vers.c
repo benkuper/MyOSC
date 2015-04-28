@@ -1,0 +1,1 @@
+ const unsigned char MyoExtensionVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:MyoExtension  PROJECT:MyoExtension-1" "\n"; const double MyoExtensionVersionNumber __attribute__ ((used)) = (double)1.;

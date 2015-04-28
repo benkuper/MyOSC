@@ -12,7 +12,14 @@
             </applicationDeployment>  
         </platform>
         
-      
+        <platform name="MacOS-x86">
+            <applicationDeployment>
+                <nativeLibrary>MyoExtension.framework</nativeLibrary>
+                <initializer>MyoExtInitializer</initializer>
+                <finalizer>MyoExtFinalizer</finalizer>
+            </applicationDeployment>
+        </platform>
+        
         
     </platforms>
 </extension>  

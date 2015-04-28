@@ -30,6 +30,7 @@ package
 		private var poseEnabled:Boolean;
 		private var accelEnabled:Boolean;
 		private var gyroEnabled:Boolean;
+		private var emgEnabled:Boolean;
 		
 		static public const RADIUS:Number = 80;
 		
@@ -41,6 +42,8 @@ package
 		private var orientationBT:Button;
 		private var accelBT:Button;
 		private var gyroBT:Button;
+		private var emgBT:Button;
+		
 		private var deleteBT:Button;
 		
 		public function Connection(id:String,host:String,port:int) 
@@ -65,28 +68,28 @@ package
 			addChild(portTF);
 			
 			idLabel.x = -idLabel.width - 10;
-			idLabel.y = -40;
+			idLabel.y = -50;
 			idLabel.selectable = false;
 			idLabel.mouseEnabled = false;
 			
 			hostLabel.x = -hostLabel.width - 10;
-			hostLabel.y = -20;
+			hostLabel.y = -30;
 			hostLabel.selectable = false;
 			hostLabel.mouseEnabled = false;
 			
 			portLabel.x = -portLabel.width - 10;
-			portLabel.y = 0;
+			portLabel.y = -10;
 			portLabel.selectable = false;
 			portLabel.mouseEnabled = false;
 			
 			idTF.x = -5;
-			idTF.y = -40;
+			idTF.y = -50;
 			
 			hostTF.x = -5;
-			hostTF.y = -20;
+			hostTF.y = -30;
 			
 			portTF.x = -5;
-			portTF.y = 0;
+			portTF.y = -10;
 			
 			poseBT = new Button(new Assets.POSE_BT() as Bitmap);
 			poseBT.x = -50;
@@ -110,7 +113,10 @@ package
 			addChild(gyroBT );
 			
 			
-			
+			emgBT = new Button(new Assets.EMGSEND_BT() as Bitmap);
+			emgBT.x = 0;
+			emgBT.y = 30;
+			addChild(emgBT);
 			
 			deleteBT = new Button(new Assets.DELETE_16() as Bitmap);
 			deleteBT.x = 0;
@@ -121,6 +127,8 @@ package
 			orientationBT.addEventListener(MouseEvent.CLICK,orientationBTClick);
 			accelBT.addEventListener(MouseEvent.CLICK,accelBTClick);
 			gyroBT.addEventListener(MouseEvent.CLICK,gyroBTClick);
+			emgBT.addEventListener(MouseEvent.CLICK, emgBTClick);
+
 			deleteBT.addEventListener(MouseEvent.CLICK, deleteBTClick);
 			
 			addEventListener(MouseEvent.CLICK, mouseClick);
@@ -130,11 +138,14 @@ package
 			this.accelEnabled = true;
 			this.gyroEnabled = true;
 			this.poseEnabled = true;
+			this.emgEnabled = true;
 			
 			TweenLite.fromTo(this, .3, { scaleX:0, scaleY:0 }, { scaleX:1, scaleY:1 } );
 			draw();
 			
 		}
+		
+		
 		
 		
 		//UI
@@ -161,9 +172,9 @@ package
 			var msg:OSCMessage = new OSCMessage();
 			msg.address = "/myo/orientation";
 			msg.addArgument("s", myoID);
-			msg.addArgument("f",roll);
+			msg.addArgument("f",yaw);
 			msg.addArgument("f",pitch)
-			msg.addArgument("f",yaw)
+			msg.addArgument("f",roll)
 			send(msg);
 		}
 		
@@ -202,6 +213,17 @@ package
 			msg.addArgument("f", gyro[0]);
 			msg.addArgument("f", gyro[1]);
 			msg.addArgument("f", gyro[2]);
+			send(msg);
+		}
+		
+		public function sendEMG(myoID:String, data:Vector.<int>):void
+		{
+			if (!enabled) return;
+		if (!emgEnabled) return;
+			var msg:OSCMessage = new OSCMessage();
+			msg.address = "/myo/emg";
+			msg.addArgument("s", myoID);
+			for (var i:int = 0; i < data.length; i++) msg.addArgument("i", data[i]);
 			send(msg);
 		}
 		
@@ -253,6 +275,13 @@ package
 		{
 			accelEnabled = !accelEnabled;
 			TweenLite.to(accelBT, .25, { alpha:accelEnabled?1:.3 } );
+		}
+		
+		
+		private function emgBTClick(e:MouseEvent):void 
+		{
+			emgEnabled = !emgEnabled;
+			TweenLite.to(emgBT, .25, { alpha:emgEnabled?1:.3 } );
 		}
 		
 		private function deleteBTClick(e:MouseEvent):void 

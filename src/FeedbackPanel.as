@@ -3,6 +3,7 @@ package
 	import assets.Assets;
 	import assets.fonts.Fonts;
 	import benkuper.nativeExtensions.Myo;
+	import benkuper.nativeExtensions.MyoController;
 	//import benkuper.nativeExtensions.NativeSerial;
 	//import benkuper.nativeExtensions.SerialPort;
 	import com.greensock.easing.Strong;
@@ -30,6 +31,12 @@ package
 		private var infos:Sprite;
 		private var infosTF:TextField;
 		
+		private var autoLockBT:Button;
+		private var currentAutoLock:Boolean;
+		
+		private var emgBT:Button
+		private var emgEnabled:Boolean;
+		
 		public function FeedbackPanel()
 		{
 			instance = this;
@@ -54,7 +61,40 @@ package
 			infosTF = Fonts.createTF("Infos", Fonts.normalCenterTF,TextFieldAutoSize.CENTER);
 			infos.addChild(infosTF);
 			
+			currentAutoLock = false;
+			autoLockBT = new Button(new Assets.AUTOLOCK_BT());
+			autoLockBT.alpha = .5;
+			emgBT = new Button(new Assets.EMG_BT());
+			emgBT.alpha = .5;
+			emgEnabled = false;
+			infos.addChild(autoLockBT);
+			infos.addChild(emgBT);
+			
+			infos.addEventListener(MouseEvent.CLICK, infosClick);
+			
 			feedbackContainer.addEventListener(MouseEvent.CLICK, containerClick);
+		}
+		
+		private function infosClick(e:MouseEvent):void 
+		{
+			if (!(selectedFeedback is MyoFeedback)) return;
+			switch(e.target)
+			{					
+				case autoLockBT:
+					currentAutoLock = !currentAutoLock;
+					autoLockBT.alpha = currentAutoLock?1:.5;
+					if (currentAutoLock) (selectedFeedback as MyoFeedback).myo.setLock(currentAutoLock);
+					MyoController.instance.setLockingPolicy(currentAutoLock);
+					break;
+					
+				case emgBT:
+					
+					emgEnabled = !emgEnabled;
+					emgBT.alpha = emgEnabled?1:.5;
+					(selectedFeedback as MyoFeedback).myo.setStreamEMG(emgEnabled);
+					
+					break;
+			}
 		}
 		//UI
 		
@@ -81,6 +121,13 @@ package
 			
 			infosTF.x = -infosTF.textWidth/2;
 			infosTF.y = -infosTF.textHeight / 2;
+			
+			autoLockBT.visible = emgBT.visible = selectedFeedback is MyoFeedback;
+			autoLockBT.x = 0;// -autoLockBT.width / 2;
+			autoLockBT.y = autoLockBT.height/2+10;
+			
+			emgBT.x = 0;// -emgBT.width / 2;
+			emgBT.y = -emgBT.height/2-10;
 		}
 		
 		// DATA
