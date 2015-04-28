@@ -37,8 +37,9 @@ When installed, application should open full screen.
 
 - Connect with multiple Myos
 - Live creation / removal of OSC targets
-- Orientation, Pose, Gyroscope and Accelerometer data providing
-- Per target data filtering (enabled pose / orientation sending)
+- Orientation (Yaw/Pitch/Roll), Pose, Gyroscope, Accelerometer and EMG data streaming
+- Per target data filtering
+- Support for disabling Myo auto-lock mode
 - One Click Saving / Loading presets
 - OSC target registration (the target application can send an OSC Message to register into the bridge)
 - Vibrate Myo via OSC, by ID or all at once
