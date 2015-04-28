@@ -9,6 +9,7 @@ MyOSC can also receive vibrate OSC messages from applications to make the connec
 ### Installation / Usage
 
 Windows : Install using the MyOSC.exe in the "installers" folder.
+
 Mac : Install using the MyOSC.dmg in the "installers" folder. You might need to copy "myo.framework" from the official Myo SDK from Thalmic into the "~/Library/Frameworks" folder of your computer.
 
 
