@@ -1,61 +1,55 @@
-<?xml version="1.0" encoding ="utf-8"?>
+<?xml version="1.0" ?>
 <swc xmlns="http://www.adobe.com/flash/swccatalog/9">
-  <versions>
-    <swc version="1.2" />
-    <flex version="4.6.0" build="23201" minimumSupportedVersion="3.0.0" />
-  </versions>
-  <features>
-    <feature-script-deps />
-    <feature-files />
-  </features>
-  <libraries>
-    <library path="library.swf">
-      <script name="_ce0aa49c28c7fac122ea5549052582734360227cfc16eb85ce129f336d640887_flash_display_Sprite" mod="1430218467860" signatureChecksum="2821552403" >
-        <def id="_ce0aa49c28c7fac122ea5549052582734360227cfc16eb85ce129f336d640887_flash_display_Sprite" /> 
-        <dep id="flash.system:Security" type="e" /> 
-        <dep id="flash.display:Sprite" type="i" /> 
-        <dep id="AS3" type="n" /> 
-      </script>
-      <script name="benkuper/nativeExtensions/Myo" mod="1430217139785" signatureChecksum="1902340078" >
-        <def id="benkuper.nativeExtensions:Myo" /> 
-        <dep id="benkuper.nativeExtensions:MyoController" type="e" /> 
-        <dep id="benkuper.nativeExtensions:MyoEvent" type="e" /> 
-        <dep id="flash.events:EventDispatcher" type="i" /> 
-        <dep id="AS3" type="n" /> 
-      </script>
-      <script name="benkuper/nativeExtensions/MyoEvent" mod="1430180259608" signatureChecksum="3264724509" >
-        <def id="benkuper.nativeExtensions:MyoEvent" /> 
-        <dep id="benkuper.nativeExtensions:Myo" type="s" /> 
-        <dep id="flash.events:Event" type="i" /> 
-        <dep id="AS3" type="n" /> 
-      </script>
-      <script name="benkuper/nativeExtensions/MyoController" mod="1430218334501" signatureChecksum="546579774" >
-        <def id="benkuper.nativeExtensions:MyoController" /> 
-        <dep id="flash.events:TimerEvent" type="s" /> 
-        <dep id="__AS3__.vec:Vector" type="s" /> 
-        <dep id="flash.events:StatusEvent" type="s" /> 
-        <dep id="benkuper.nativeExtensions:Myo" type="s" /> 
-        <dep id="flash.utils:Timer" type="s" /> 
-        <dep id="flash.external:ExtensionContext" type="s" /> 
-        <dep id="flash.events:Event" type="s" /> 
-        <dep id="trace" type="e" /> 
-        <dep id="flash.desktop:NativeApplication" type="e" /> 
-        <dep id="flash.events:TimerEvent" type="e" /> 
-        <dep id="__AS3__.vec:Vector" type="e" /> 
-        <dep id="flash.events:StatusEvent" type="e" /> 
-        <dep id="benkuper.nativeExtensions:Myo" type="e" /> 
-        <dep id="flash.utils:Timer" type="e" /> 
-        <dep id="flash.external:ExtensionContext" type="e" /> 
-        <dep id="benkuper.nativeExtensions:MyoEvent" type="e" /> 
-        <dep id="flash.events:Event" type="e" /> 
-        <dep id="flash.events:EventDispatcher" type="i" /> 
-        <dep id="AS3" type="n" /> 
-      </script>
-      <digests>
-        <digest type="SHA-256" signed="false" value="945589a3a8438e7d821a5d131323bea1cf12f96ec5aed394de6bb3f78215b75c"   />
-      </digests>
-    </library>
-  </libraries>
-  <files>
-  </files>
+    <versions>
+        <swc version="1.2"/>
+        <compiler name="ActionScript Compiler" version="2.0.0" build="354154"/>
+    </versions>
+    <features>
+        <feature-script-deps/>
+    </features>
+    <libraries>
+        <library path="library.swf">
+            <script name="benkuper/nativeExtensions/Myo" mod="1444723257559">
+                <def id="benkuper.nativeExtensions:Myo"/>
+                <dep id="Array" type="s"/>
+                <dep id="Boolean" type="s"/>
+                <dep id="Number" type="s"/>
+                <dep id="String" type="s"/>
+                <dep id="__AS3__.vec:Vector" type="s"/>
+                <dep id="benkuper.nativeExtensions:MyoController" type="e"/>
+                <dep id="benkuper.nativeExtensions:MyoEvent" type="e"/>
+                <dep id="flash.events:EventDispatcher" type="i"/>
+                <dep id="int" type="s"/>
+            </script>
+            <script name="benkuper/nativeExtensions/MyoController" mod="1444723453641">
+                <def id="benkuper.nativeExtensions:MyoController"/>
+                <dep id="Boolean" type="s"/>
+                <dep id="Function" type="s"/>
+                <dep id="Number" type="s"/>
+                <dep id="String" type="s"/>
+                <dep id="__AS3__.vec:Vector" type="s"/>
+                <dep id="benkuper.nativeExtensions:Myo" type="s"/>
+                <dep id="benkuper.nativeExtensions:MyoEvent" type="e"/>
+                <dep id="flash.desktop:NativeApplication" type="e"/>
+                <dep id="flash.events:Event" type="s"/>
+                <dep id="flash.events:EventDispatcher" type="i"/>
+                <dep id="flash.events:StatusEvent" type="s"/>
+                <dep id="flash.events:TimerEvent" type="s"/>
+                <dep id="flash.external:ExtensionContext" type="s"/>
+                <dep id="flash.utils:Timer" type="s"/>
+                <dep id="int" type="s"/>
+                <dep id="trace" type="e"/>
+            </script>
+            <script name="benkuper/nativeExtensions/MyoEvent" mod="1444723253763">
+                <def id="benkuper.nativeExtensions:MyoEvent"/>
+                <dep id="Boolean" type="s"/>
+                <dep id="String" type="s"/>
+                <dep id="benkuper.nativeExtensions:Myo" type="s"/>
+                <dep id="flash.events:Event" type="i"/>
+            </script>
+            <digests>
+                <digest type="SHA-256" signed="false" value="0aa2d43bf36baf965eefd0a2b1eb166096fed6ed4e11cd4a81f5971efd00a72a"/>
+            </digests>
+        </library>
+    </libraries>
 </swc>

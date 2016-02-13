@@ -97,7 +97,7 @@ package
 		public function remove():void 
 		{
 			var f:File = getPresetFile();
-			f.deleteFile();
+			if(f.exists) f.deleteFile();
 		}
 		
 		//HANDLERS

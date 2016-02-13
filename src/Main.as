@@ -7,9 +7,6 @@ package
 
 import flash.system.Capabilities;
 
-    //import benkuper.nativeExtensions.NativeSerial;
-	//import benkuper.nativeExtensions.SerialEvent;
-	//import benkuper.nativeExtensions.SerialPort;
 	import com.greensock.TweenLite;
 	import flash.desktop.NativeApplication;
 	import flash.desktop.SystemTrayIcon;

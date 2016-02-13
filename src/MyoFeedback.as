@@ -63,6 +63,9 @@ package
 			myo.addEventListener(MyoEvent.MYO_DISCONNECTED, myoDisconnected);
 			
 			myo.addEventListener(MyoEvent.EMGDATA_UPDATE, emgUpdate);
+			
+			myo.addEventListener(MyoEvent.DATA_UPDATE, dataUpdate);
+			
 		}		
 		
 		private function emgUpdate(e:MyoEvent):void 
@@ -104,7 +107,7 @@ package
 			offsetYaw = myo.yaw;
 		}
 		
-		private function orientationUpdate(e:MyoEvent):void 
+		private function dataUpdate(e:MyoEvent):void 
 		{
 			if (!enabled) return;
 			
@@ -124,9 +127,13 @@ package
 			lines.graphics.lineStyle(3, reversed?0x46B517:0x06A9CC);
 			drawArc(lines.graphics, new Point(), RADIUS - 3, 90, myo.pitch * 180 / Math.PI + 90);
 			
-			ConnectionPanel.sendOrientation(myo.id, correctedYaw, myo.pitch, myo.roll);
-			ConnectionPanel.sendAccel(myo.id, myo.accel);
-			ConnectionPanel.sendGyro(myo.id, myo.gyro);
+			if (orientationEnabled)
+			{
+				ConnectionPanel.sendOrientation(myo.id, correctedYaw, myo.pitch, myo.roll);
+				ConnectionPanel.sendAccel(myo.id, myo.accel);
+				ConnectionPanel.sendGyro(myo.id, myo.gyro);
+			}
+			
 		}
 		
 		private function poseUpdate(e:MyoEvent):void 
@@ -174,8 +181,6 @@ package
 			if (orientationEnabled == value) return;
 			_orientationEnabled = value;
 			
-			if (value) myo.addEventListener(MyoEvent.ORIENTATION_UPDATE, orientationUpdate);
-			else myo.removeEventListener(MyoEvent.ORIENTATION_UPDATE, orientationUpdate);
 			
 		}
 		
