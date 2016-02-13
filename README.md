@@ -10,7 +10,8 @@ MyOSC can also receive vibrate OSC messages from applications to make the connec
 
 Windows : Install using the MyOSC.exe in the "installers" folder.
 
-Mac : Install using the MyOSC.dmg in the "installers" folder. You might need to copy "myo.framework" from the official Myo SDK from Thalmic into the "~/Library/Frameworks" folder of your computer.
+Mac : Install using the MyOSC.dmg in the "installers" folder. You might need to copy "myo.framework" included in the root folder of this repository into the "~/Library/Frameworks" folder of your computer.
+Also, since Adobe changed it's native extensions architecture in Adobe AIR 20, you need to keep your AIR version to 19 in order to work, otherwise you'll get a "The required native extension is missing…" error.
 
 
 When installed, application should open full screen.
